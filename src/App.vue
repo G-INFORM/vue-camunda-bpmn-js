@@ -1,7 +1,11 @@
 <template>
   <div class="content with-diagram" ref="js-drop-zone">
-    <div class="entry" style="position: absolute; left: 45%; width: 100px">
-      <a href ref="data-download" download="test.bpmn" @click="serialize" style="width: 100px; height: 20px; border: 1px solid #2c3e50">Download</a>
+    <div class="entry" style="position: absolute; left: 40%; width: 300px; height: 20px; z-index:100;">
+      <a href ref="data-download" download="test.bpmn" @click="serialize" style="text-align: center; width: 100px; height: 20px; border: 1px solid #2c3e50">Download</a>
+      <label for="uploads" style="text-align: center; width: 100px; height: 20px; border: 1px solid #2c3e50">
+        Upload
+      </label>
+      <input v-on:change="upload" id="uploads" type="file" style="display: none;"/>
     </div>
     <div class="message intro">
       <div class="note">
@@ -44,7 +48,7 @@ import BpmnModeler from 'camunda-bpmn-js/lib/camunda-platform/Modeler';
 import EmbeddedComments from 'bpmn-js-embedded-comments';
 import 'camunda-bpmn-js/dist/assets/camunda-platform-modeler.css';
 // import BpmnModeler from 'bpmn-js/lib/Modeler';
-const diagramXML = '<?xml version="1.0" encoding="UTF-8"?>\n' +
+const DiagramXML = '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn">\n' +
     '  <bpmn2:process id="Process_1" isExecutable="false">\n' +
     '    <bpmn2:startEvent id="StartEvent_1"/>\n' +
@@ -68,8 +72,8 @@ export default {
   components: {
   },
   methods:{
-    createNewDiagram() {
-      this.openDiagram(diagramXML);
+    async createNewDiagram() {
+      await this.openDiagram(DiagramXML);
     },
     async openDiagram(xml) {
       try {
@@ -155,10 +159,9 @@ export default {
     //   }
     // }
     async serialize() {
-
       try {
         const { xml } = await this.modeler.saveXML();
-
+        console.log(xml)
         let encodedData = encodeURIComponent(xml);
         this.$refs["data-download"].href = 'data:application/bpmn20-xml;charset=UTF-8,' + encodedData
 
@@ -166,6 +169,17 @@ export default {
 
         console.error('failed to serialize BPMN 2.0 xml', err);
       }
+    },
+    upload(e) {
+      let files = e.target.files;
+      let file = files[0];
+      let reader = new FileReader();
+      let vm = this;
+      reader.onload = async function(e) {
+        let xml = e.target.result;
+        await vm.openDiagram(xml);
+      };
+      reader.readAsText(file);
     }
   },
   async mounted() {
@@ -182,7 +196,7 @@ export default {
     //this.modeler.attachTo('#canvas');
     try {
 
-      await this.modeler.importXML(diagramXML);
+      await this.modeler.importXML(DiagramXML);
 
       console.log('success!');
       //bpmnModeler.get('canvas').zoom('fit-viewport');
@@ -199,11 +213,13 @@ export default {
     } else {
       this.registerFileDrop(this.container, this.openDiagram);
     }
-
-    this.modeler.on('comments.updated', this.serialize);
-    this.modeler.on('commandStack.changed', this.serialize);
+    // console.log(this.modeler.injector._instances.eventBus._listeners['comments.updated'])
+    //this.modeler.on('comments.updated', this.serialize);
+    //this.modeler.on('commandStack.changed', this.serialize);
+    // console.log(this.modeler.injector._instances.eventBus._listeners['comments.updated'])
 
     this.modeler.on('canvas.click', function() {
+      console.log(123)
       this.modeler.get('comments').collapseAll();
     });
 //
@@ -250,7 +266,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /*text-align: center;*/
   color: #2c3e50;
   /*margin-top: 60px;*/
 }
@@ -433,6 +449,60 @@ a:link {
   color: white;
 }
 
+.comments-overlay {
+  background: #52B415;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.comments-overlay.expanded {
+  z-index: 100;
+  position: absolute; /* for z-index to work */
+}
+
+.comments-overlay .toggle {
+  white-space: nowrap;
+}
+
+.comments-overlay.expanded .comment-count,
+.comments-overlay .content {
+  display: none;
+}
+
+.comments-overlay .comment-count {
+  display: inline;
+}
+
+.comments-overlay.expanded .content {
+  display: block;
+}
+
+.comments-overlay .comment {
+  border-top: dotted 1px #666;
+  margin-top: 4px;
+  padding-top: 4px;
+  white-space: pre-wrap;
+
+  position: relative;
+}
+
+.comments-overlay .comment .delete {
+  position: absolute;
+  right: 3px;
+  top: 3px;
+
+  text-decoration: none;
+
+  display: none;
+}
+
+.comments-overlay .comment:hover .delete {
+  display: block;
+}
+
+.comments-overlay .edit {
+
+}
 
 /** fonts **/
 
