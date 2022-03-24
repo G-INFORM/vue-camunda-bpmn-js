@@ -1,6 +1,6 @@
 <template>
   <div class="content with-diagram" ref="js-drop-zone">
-    <div class="entry" style="position: absolute; left: 45%">
+    <div class="entry" style="position: absolute; left: 45%; width: 100px">
       <a href ref="data-download" download="test.bpmn" @click="serialize" style="width: 100px; height: 20px; border: 1px solid #2c3e50">Download</a>
     </div>
     <div class="message intro">
