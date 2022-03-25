@@ -1,8 +1,8 @@
 <template>
   <div class="content with-diagram" ref="js-drop-zone">
-    <div class="entry" style="position: absolute; left: 40%; width: 300px; height: 20px; z-index:100;">
-      <a href ref="data-download" download="test.bpmn" @click="serialize" style="text-align: center; width: 100px; height: 20px; border: 1px solid #2c3e50">Download</a>
-      <label for="uploads" style="text-align: center; width: 100px; height: 20px; border: 1px solid #2c3e50">
+    <div class="entry" style="position: absolute; left: 40%; width: fit-content; height: fit-content; z-index:100;">
+      <a href ref="data-download" download="test.bpmn" @click="serialize" class="btn">Download</a>
+      <label for="uploads" class="btn">
         Upload
       </label>
       <input v-on:change="upload" id="uploads" type="file" style="display: none;"/>
@@ -49,18 +49,20 @@ import EmbeddedComments from 'bpmn-js-embedded-comments';
 import 'camunda-bpmn-js/dist/assets/camunda-platform-modeler.css';
 // import BpmnModeler from 'bpmn-js/lib/Modeler';
 const DiagramXML = '<?xml version="1.0" encoding="UTF-8"?>\n' +
-    '<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn">\n' +
-    '  <bpmn2:process id="Process_1" isExecutable="false">\n' +
-    '    <bpmn2:startEvent id="StartEvent_1"/>\n' +
-    '  </bpmn2:process>\n' +
-    '  <bpmndi:BPMNDiagram id="BPMNDiagram_1">\n' +
-    '    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">\n' +
-    '      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">\n' +
-    '        <dc:Bounds height="36.0" width="36.0" x="412.0" y="240.0"/>\n' +
-    '      </bpmndi:BPMNShape>\n' +
-    '    </bpmndi:BPMNPlane>\n' +
-    '  </bpmndi:BPMNDiagram>\n' +
-    '</bpmn2:definitions>';
+    '<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"><bpmn2:process id="x" isExecutable="false" /><bpmndi:BPMNDiagram id="BPMNDiagram_1"><bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="x" /></bpmndi:BPMNDiagram></bpmn2:definitions>'
+    // '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    // '<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn">\n' +
+    // '  <bpmn2:process id="Process_1" isExecutable="false">\n' +
+    // '    <bpmn2:startEvent id="StartEvent_1"/>\n' +
+    // '  </bpmn2:process>\n' +
+    // '  <bpmndi:BPMNDiagram id="BPMNDiagram_1">\n' +
+    // '    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">\n' +
+    // '      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">\n' +
+    // '        <dc:Bounds height="36.0" width="36.0" x="412.0" y="240.0"/>\n' +
+    // '      </bpmndi:BPMNShape>\n' +
+    // '    </bpmndi:BPMNPlane>\n' +
+    // '  </bpmndi:BPMNDiagram>\n' +
+    // '</bpmn2:definitions>';
 
 export default {
   name: 'App',
@@ -502,6 +504,30 @@ a:link {
 
 .comments-overlay .edit {
 
+}
+
+.btn{
+  text-align: center;
+  width: 100px;
+  white-space: nowrap;
+  user-select: none;
+  touch-action: manipulation;
+  border: 1px solid #ccc;
+  border-radius: 5px ;
+  margin: 6px;
+  padding: 6px 12px;
+  vertical-align: middle;
+  color: #2c3e50;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #f8f8f8;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.btn:hover{
+  color: #fff;
+  background-color: #4d90ff;
 }
 
 /** fonts **/
