@@ -185,6 +185,11 @@ export default {
     }
   },
   async mounted() {
+    window.onbeforeunload = function () {
+      return true;
+    };
+
+
     this.modeler = new BpmnModeler({
       container: '#canvas',
       propertiesPanel: {
