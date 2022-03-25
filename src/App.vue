@@ -1,6 +1,6 @@
 <template>
   <div class="content with-diagram" ref="js-drop-zone">
-    <div class="entry" style="position: absolute; left: 40%; width: fit-content; height: fit-content; z-index:100;">
+    <div class="entry" style="position: absolute; left: 40%; width: auto; height: auto; z-index:100;">
       <a href ref="data-download" download="test.bpmn" @click="serialize" class="btn">Download</a>
       <label for="uploads" class="btn">
         Upload
