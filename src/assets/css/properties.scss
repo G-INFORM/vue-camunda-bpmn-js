@@ -1,0 +1,31 @@
+
+#properties {
+  width: 410px;
+  height: 100vh;
+}
+
+.properties {
+  margin-top: -34px;
+
+  &:empty {
+    display: none;
+    min-width: 410px;
+  }
+
+  > .bpp-properties-panel {
+    /*padding-bottom: 70px;*/
+    border-left: 1px solid #ccc;
+    min-height: 100%;
+    max-height: 100%;
+    min-width: 100%;
+    overflow: auto;
+  }
+
+  > .djs-properties-panel {
+    padding-bottom: 70px;
+    min-height: 100%;
+  }
+
+
+}
+

@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  ///font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /*text-align: center;*/
+  color: #2c3e50;
+  /*margin-top: 60px;*/
+}
+
+.main {
+  display: flex;
+  flex: 1 1 0%;
+  overflow-x: hidden;
+}
+
+.modeler {
+  display: flex;
+  flex: 1 1 0%;
+  position: relative;
+  background-color: white;
+}
+
+.aside {
+  width: 400px;
+  position: relative;
+  margin-top: -1px;
+  z-index: 3;
+}
+
+.bjs-powered-by{
+  display: none;
+}
+
+//.djs-minimap{
+//  background-color: #f8f8f8;
+//  border: 1px solid #ccc  ;
+//}
+
+.djs-minimap.open .toggle{
+  padding: 10px;
+}
+
+.io-import-export {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  //width: 48px;
+  z-index:100;
+}
+
+.io-control-list.io-horizontal, .io-control-list.io-horizontal li {
+  display: inline-block;
+}
+.io-import, .io-export {
+  margin-right: 10px!important;
+}
+.io-control-list {
+  list-style: none;
+  padding: 5px;
+  margin: 0;
+}
+.io-control {
+  background: #FAFAFA;
+  border-radius: 2px;
+  border: solid 1px #E0E0E0;
+  padding: 5px;
+}
+ul {
+  display: block;
+  padding-left: 30px;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+
+
+
+.io-control-list.io-horizontal, .io-control-list.io-horizontal li {
+  display: inline-block;
+}
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+.io-control-list {
+  list-style: none;
+  padding: 5px;
+  margin: 0;
+}
+
+.io-control-list.io-horizontal li + li {
+  margin-left: 10px;
+}
+.io-control-list .vr {
+  margin-right: 0;
+}
+
+.io-control .vr {
+  height: 15px;
+  display: inline-block;
+  border-right: solid 1px #DDD;
+}
+
+.io-control-list.io-horizontal a {
+  padding: 2px;
+}
+
+.io-control-list a, .io-control-list a:visited, .io-control-list button {
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 26px;
+  color: #555555;
+  background: none;
+  border: none;
+}
+
+

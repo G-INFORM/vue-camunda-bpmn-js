@@ -1,0 +1,88 @@
+.selected .comments-overlay,
+.comments-overlay.with-comments {
+  display: block;
+}
+
+.comments-overlay {
+  background: #52B415;
+  font-size: 12px;
+  color: white;
+  display: none;
+  padding: 5px;
+  border-radius: 5px;
+
+  .toggle {
+    white-space: nowrap;
+  }
+
+  .icon-comment {
+    margin-right: 2px;
+    &:hover {
+      color: #EEE;
+    }
+  }
+
+  .comment-count {
+    display: inline;
+  }
+
+  .icon-delete {
+    color: white;
+  }
+
+  .expanded {
+    z-index: 100;
+    position: absolute; /* for z-index to work */
+  }
+  &.expanded .content {
+    display: block;
+  }
+
+  .comment {
+    border-top: dotted 1px #666;
+    margin-top: 4px;
+    padding-top: 4px;
+    white-space: pre-wrap;
+    position: relative;
+
+    .delete {
+      position: absolute;
+      right: 3px;
+      top: 3px;
+      text-decoration: none;
+      display: none;
+    }
+    &:hover .delete {
+      display: block;
+    }
+  }
+
+  .edit {
+    margin: 2px 0 0 0;
+    padding-top: 2px;
+    textarea {
+      border: none;
+      margin: 0;
+    }
+  }
+
+  .comment {
+    border-top-color: white;
+  }
+
+  > .content {
+    flex-direction: column;
+    > .comments {
+      flex-direction: column;
+    }
+  }
+
+  &.expanded .comment-count,
+  .content {
+    display: none;
+  }
+
+}
+
+
+

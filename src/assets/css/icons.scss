@@ -1,0 +1,30 @@
+.icon-open:before {
+  content: '\f41e';
+}
+.icon-plus-circled:before {
+  content: '\f418';
+}
+.icon-download:before {
+  content: '\f41b';
+}
+.icon-picture:before {
+  content: '\f416';
+}
+.icon-keyboard:before {
+  content: '\f423';
+}
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "app";
+}
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+}

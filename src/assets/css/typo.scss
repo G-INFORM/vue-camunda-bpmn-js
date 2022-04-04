@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'bpmn-js-comments';
+  src: url('../fonts/bpmn-js-comments.eot');
+  src: url('../fonts/bpmn-js-comments.eot#iefix') format('embedded-opentype'),
+  url('../fonts/bpmn-js-comments.woff') format('woff'),
+  url('../fonts/bpmn-js-comments.ttf') format('truetype'),
+  url('../fonts/bpmn-js-comments.svg#bpmn-js-comments') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'app';
+  src: url('../fonts/app.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "bpmn-js-comments";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  text-align: center;
+
+  font-variant: normal;
+  text-transform: none;
+
+  line-height: 1em;
+}
+
+.icon-comment:before { content: '\e800'; }
+.icon-delete:before { content: '\e802'; }
