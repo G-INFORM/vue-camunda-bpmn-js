@@ -35,3 +35,39 @@ a:link {
   }
 
 }
+
+.btn-aside {
+  position: sticky;
+  left: 1px;
+  top: 50%;
+  width: 160px;
+  height: 34px;
+  background-color: #f8f8f8;
+  color: #222;
+  transform: rotate(-90deg) translateX(-50%) translateY(-100%);
+  transform-origin: left top;
+  font-weight: bold;
+  font-size: 13px;
+  font-family: inherit;
+  border: 1px solid #ccc;
+  border-radius: 3px 3px 0px 0px;
+  box-shadow: #00000040 0px 0px 2px;
+  outline: none;
+  cursor: pointer;
+  z-index: 2;
+
+  &:hover {
+    background-color: #eee;
+  }
+
+  & > svg {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding-bottom: 3px;
+    box-sizing: content-box;
+    color: var(--grey-darken-23);
+    border-bottom: 1px solid #ccc;
+    transform: rotate(90deg);
+  }
+}

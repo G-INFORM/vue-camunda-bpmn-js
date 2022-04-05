@@ -80,7 +80,6 @@ export default {
         this.error = error.message;
         this.isHiddenAside = true;
 
-
         console.error(error);
       }
     },
@@ -181,96 +180,13 @@ export default {
     };
 
     await this.initializeBPMN();
+    // console.log(this.modeler.injector._instances.eventBus._listeners)
+
   }
 }
 </script>
 
 <style lang="scss">
 
-.content,
-{ //.content > div
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
 
-
-.content .canvas,
-.content.with-error .canvas {
-  visibility: hidden;
-  height: 100vh;
-}
-
-.content.with-diagram .canvas {
-  visibility: visible;
-  height: 100vh;
-}
-//
-//.buttons {
-//  position: fixed;
-//  bottom: 20px;
-//  left: 20px;
-//
-//  padding: 0;
-//  margin: 0;
-//  list-style: none;
-//}
-//
-//.buttons > li {
-//  display: inline-block;
-//  margin-right: 10px;
-//}
-//
-//.buttons > li > a {
-//  background: #DDD;
-//  border: solid 1px #666;
-//  display: inline-block;
-//  padding: 5px;
-//}
-//
-//.buttons a {
-//  opacity: 0.3;
-//}
-//
-//.buttons a.active {
-//  opacity: 1.0;
-//}
-
-
-.btn-aside {
-  position: sticky;
-  left: 1px;
-  top: 50%;
-  width: 160px;
-  height: 34px;
-  background-color: #f8f8f8;
-  color: #222;
-  transform: rotate(-90deg) translateX(-50%) translateY(-100%);
-  transform-origin: left top;
-  font-weight: bold;
-  font-size: 13px;
-  font-family: inherit;
-  border: 1px solid #ccc;
-  border-radius: 3px 3px 0px 0px;
-  box-shadow: #00000040 0px 0px 2px;
-  outline: none;
-  cursor: pointer;
-  z-index: 2;
-
-  &:hover {
-    background-color: #eee;
-  }
-
-  & > svg {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    padding-bottom: 3px;
-    box-sizing: content-box;
-    color: var(--grey-darken-23);
-    border-bottom: 1px solid #ccc;
-    transform: rotate(90deg);
-  }
-}
 </style>

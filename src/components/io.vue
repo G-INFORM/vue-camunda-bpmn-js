@@ -38,8 +38,8 @@
       </li>
     </ul>
 
-    <div class="io-dialog keybindings-dialog" :class="x? 'open' : ''" v-on:mousedown.self="x = false">
-      <div class="content bindings-default" style="display: inline; font-size: 14px">
+    <div class="io-dialog" :class="x? 'open' : ''" v-on:mousedown.self="x = false">
+      <div class="content" style="display: inline; font-size: 14px">
         <h1>Сочетания клавиш</h1>
         <table>
           <tbody>
@@ -50,7 +50,7 @@
           <tr>
             <td>Повторить</td>
             <td class="binding"><code>ctrl + shift + Z</code></td>
-<!--            (⇧)-->
+            <!--            (⇧)-->
           </tr>
           <tr>
             <td>Выделить всё</td>
@@ -96,7 +96,7 @@ export default {
   data: () => ({
     x: false,
   }),
-  methods:{
+  methods: {
     debounce(fn, timeout) {
       let timer;
       return function () {
@@ -110,7 +110,7 @@ export default {
       let encodedData = encodeURIComponent(data);
       if (data) {
         link.classList.add('active');
-        link.setAttribute('href','data:application/bpmn20-xml;charset=UTF-8,' + encodedData)
+        link.setAttribute('href', 'data:application/bpmn20-xml;charset=UTF-8,' + encodedData)
         link.setAttribute('download', name)
       } else {
         link.classList.remove('active');
@@ -146,7 +146,7 @@ export default {
   },
   mounted() {
     this.$nextTick(function () {
-      if (this.modeler){
+      if (this.modeler) {
         this.initSerializing();
       }
     })
@@ -155,48 +155,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.io-dialog.open {
-  display: block;
-}
-.io-dialog {
-  display: none;
-}
-.io-dialog.open:before {
-  content: '';
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  background: #666;
-  opacity: 0.2;
-  z-index: 1001;
-}
-.keybindings-dialog .content {
-  width: 450px;
-  margin-left: -225px;
-}
-.io-dialog .content {
-  position: fixed;
-  width: 600px;
-  left: 50%;
-  margin-left: -300px;
-  top: 100px;
-  background: white;
-  padding: 10px 30px 20px 30px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  border-radius: 2px;
-  height: auto;
-  z-index: 1001;
-}
-//.content, .content > div {
-//  width: 100%;
-//  height: 100%;
-//  overflow: hidden;
-//}
-.keybindings-dialog .binding {
-  padding: 5px 10px;
-  font-family: monospace;
-}
 
 </style>

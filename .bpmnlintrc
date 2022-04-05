@@ -1,7 +1,5 @@
 {
   "extends": [
     "bpmnlint:recommended"
-
   ]
-
 }

@@ -13,6 +13,9 @@
 .icon-keyboard:before {
   content: '\f423';
 }
+.icon-delete:before {
+  content: '✖'; //❌
+}
 [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "app";
 }
