@@ -1,8 +1,26 @@
 <template>
   <div class="message intro">
     <div class="note">
-      Перетащите диаграмму BPMN со своего рабочего стола или
-      <a id="js-create-diagram" @click="$emit('createNewDiagram', $event)" href>создайте новую диаграмму</a> чтобы начать работу.
+      <div>
+        Перетащите диаграмму BPMN со своего рабочего стола или
+        <a id="js-create-diagram" @click="$emit('createNewDiagram', $event)" href>создайте новую диаграмму</a> чтобы
+        начать работу.
+
+        <div style="display: grid; margin: 70px;">
+          <label for="uploads" class="btn btn-primal" style="font-size: 30px">
+            <span class="icon-open"></span>
+            <span>  Загрузить диаграмму</span>
+          </label>
+          <input v-on:change="$emit('upload', $event)" id="uploads" type="file" style="display: none;"/>
+
+          <button class="btn btn-primal" style="font-size: 30px" title="Создать новую диаграмму BPMN"
+                  @click="$emit('createNewDiagram', $event)">
+            <span class="icon-plus-circled"></span>
+            <span>  Создать новую диаграмму</span>
+          </button>
+        </div>
+
+      </div>
     </div>
   </div>
   <div class="message error-main">
@@ -36,7 +54,7 @@ export default {
   height: 100vh;
   text-align: center;
   display: table;
-  font-size: 16px;
+  font-size: 30px;
   color: #111;
 }
 
@@ -45,6 +63,19 @@ export default {
   padding-top: 10vh;
   text-align: center;
   display: table-cell;
+
+  & > div {
+    width: 60%;
+    margin: auto;
+    padding-top: 70px;
+
+    a {
+      color: #1E88E5;
+      &:hover{
+        color: #2c3e50;
+      }
+    }
+  }
 }
 
 .content .error-main .details {

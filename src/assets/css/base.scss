@@ -36,7 +36,7 @@ body, html {
   width: 400px;
   position: relative;
   margin-top: -1px;
-  z-index: 3;
+  z-index: 2;
 }
 
 .content {
@@ -73,7 +73,7 @@ body, html {
   position: fixed;
   left: 20px;
   bottom: 20px;
-  z-index: 100;
+  z-index: 2;
 
   .io-control {
     background: #FAFAFA;
@@ -160,4 +160,9 @@ body, html {
 .binding {
   padding: 5px 30px;
   font-family: monospace;
+}
+
+.intro{
+  background: white;
+  z-index: 5;
 }

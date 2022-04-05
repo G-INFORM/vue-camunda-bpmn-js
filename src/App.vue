@@ -1,11 +1,12 @@
 <template>
-  <div class="main content with-diagram" ref="js-drop-zone">
-    <introPage :error="error"
-                @createNewDiagram = "createNewDiagram"/>
+  <div class="main content" ref="js-drop-zone">
+    <introPage @upload="upload"
+               @createNewDiagram="createNewDiagram"
+               :error="error"/>
 
-    <input-output :modeler = "modeler"
-                  @upload = "upload"
-                  @createNewDiagram = "createNewDiagram"/>
+    <input-output @upload="upload"
+                  @createNewDiagram="createNewDiagram"
+                  :modeler="modeler"/>
 
     <div id="canvas" class="canvas modeler"></div>
 
@@ -25,12 +26,12 @@
 
 <script>
 /** Моделер
-    комментарии
-    перевод на русский
-    валидатор диаграмм
-    стартовая диаграмма
-    выбор цвета для диаграмм
-**/
+ комментарии
+ перевод на русский
+ валидатор диаграмм
+ стартовая диаграмма
+ выбор цвета для диаграмм
+ **/
 
 import BpmnModeler from 'camunda-bpmn-js/lib/camunda-platform/Modeler';
 import 'camunda-bpmn-js/dist/assets/camunda-platform-modeler.css';
@@ -105,10 +106,10 @@ export default {
         // Explicitly show this is a copy.
         e.dataTransfer.dropEffect = 'copy';
       }
+
       container.addEventListener('dragover', handleDragOver, false);
       container.addEventListener('drop', handleFileSelect, false);
     },
-
     upload(e) {
       let files = e.target.files;
       let file = files[0];
@@ -120,15 +121,14 @@ export default {
       };
       reader.readAsText(file);
     },
-    closeComments() {
-      console.log("this")
-      console.log(this)
-      console.log("this")
-
-      this.modeler.get('comments').collapseAll();
-      // return 123456789
-    },
-    async initializeBPMN(){
+    // closeComments() {
+    //   console.log("this")
+    //   console.log(this)
+    //   console.log("this")
+    //
+    //   this.modeler.get('comments').collapseAll();
+    // },
+    async initializeBPMN() {
       let TranslateModule = {
         translate: ['value', ruLang]
       };
@@ -170,7 +170,7 @@ export default {
         this.registerFileDrop(this.container, this.openDiagram);
       }
 
-      this.modeler.on('canvas.click', this.closeComments);
+      // this.modeler.on('canvas.click', this.closeComments);
 
     }
   },
