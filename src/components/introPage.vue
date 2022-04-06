@@ -54,9 +54,8 @@ import ModalComponent from "@/components/ModalComponent";
 import BPInfo from "@/components/Input-Output-Info/BPInfo";
 export default {
   name: "introPage",
-  emits: ["createNewDiagram", "upload", "continueLastEdit"],
+  emits: ["createNewDiagram", "upload", "continueLastDiagram"],
   components: {BPInfo, ModalComponent},
-  emits: ["createNewDiagram", "upload"],
   props: {
     error: {
       type: String,

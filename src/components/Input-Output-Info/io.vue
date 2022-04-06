@@ -17,14 +17,20 @@
 
     <ul class="io-export io-control io-control-list io-horizontal">
       <li>
-        <a ref="data-download" download="diagram.bpmn" @click="diagramNaming"
+        <button title="Скачать в виде файла BPMN 2.0" @click="d_showSetName = true; link = $refs['data-download']">
+          <span class="icon-download"></span>
+        </button>
+        <a ref="data-download" style="display: none" id="bpmn"
            href="" class="download" title="Скачать в виде файла BPMN 2.0">
           <span class="icon-download"></span>
         </a>
       </li>
       <li class="vr"></li>
       <li>
-        <a ref="download-svg" id="download-svg" @click="diagramNamingSVG"
+        <button title="Скачать в виде SVG-изображения" @click="d_showSetName = true; link = $refs['download-svg']">
+          <span class="icon-picture"></span>
+        </button>
+        <a ref="download-svg" style="display: none" id="svg"
            href="" class="download" title="Скачать в виде SVG-изображения">
           <span class="icon-picture"></span>
         </a>
@@ -53,6 +59,12 @@
       <BPInfo/>
     </ModalComponent>
 
+    <ModalComponent v-if="d_showSetName===true" @close="d_showSetName=false">
+      <SetName :link="link"
+                @close="d_showSetName=false"
+                :p_name="diagramName"/>
+    </ModalComponent>
+
   </div>
 </template>
 
@@ -60,38 +72,25 @@
 import ModalComponent from "@/components/ModalComponent";
 import KeyboardInfo from "@/components/Input-Output-Info/keyboardInfo";
 import BPInfo from "@/components/Input-Output-Info/BPInfo";
+import SetName from "@/components/Input-Output-Info/SetName";
 
 export default {
   name: 'input-output',
-  components: {BPInfo, KeyboardInfo, ModalComponent},
+  components: {SetName, BPInfo, KeyboardInfo, ModalComponent},
   props: {
-    modeler: Object
+    modeler: Object,
+    diagramName: {
+      type: String,
+      default: ""
+    },
   },
   data: () => ({
-    x: false,
-    y: false,
-    diagramName: "diagram",
     d_showKeyInfo: false,
     d_showBPInfo: false,
+    d_showSetName: false,
+    link: null,
   }),
   methods: {
-    diagramNaming() {
-      let p = prompt('Введите имя файла');
-      if (p) {
-        this.diagramName = p;
-      }
-      // let downloadSvgLink = this.$refs['download-svg'];
-      let downloadLink = this.$refs['data-download'];
-      downloadLink.setAttribute('download', this.diagramName + '.bpmn');
-    },
-    diagramNamingSVG() {
-      let p = prompt('Введите имя файла');
-      if (p) {
-        this.diagramName = p;
-      }
-      let downloadSvgLink = this.$refs['download-svg'];
-      downloadSvgLink.setAttribute('download', this.diagramName + '.svg');
-    },
     debounce(fn, timeout) {
       let timer;
       return function () {

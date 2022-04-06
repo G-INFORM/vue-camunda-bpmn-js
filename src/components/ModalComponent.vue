@@ -9,6 +9,7 @@
 <script>
 export default {
   name: "ModalComponent",
+  emits: ["close"],
   data: () => ({
     d_show: true,
   }),

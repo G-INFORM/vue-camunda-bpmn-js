@@ -8,7 +8,8 @@
 
     <input-output @upload="upload"
                   @createNewDiagram="createNewDiagram"
-                  :modeler="modeler"/>
+                  :modeler="modeler"
+                  :diagramName="diagramName"/>
 
     <div id="canvas" class="canvas modeler"></div>
 
@@ -54,7 +55,8 @@ export default {
     container: null,
     error: null,
     date: null,
-    isHiddenAside: true
+    isHiddenAside: true,
+    diagramName: "diagram"
   }),
   components: {InputOutput, introPage},
   methods: {
@@ -102,6 +104,8 @@ export default {
 
         let files = e.dataTransfer.files;
         let file = files[0];
+        let lastIndex = file.name.split('').lastIndexOf('.');
+        this.diagramName = file.name.substring(0,lastIndex);
         let reader = new FileReader();
 
         reader.onload = function (e) {
@@ -124,6 +128,8 @@ export default {
     upload(e) {
       let files = e.target.files;
       let file = files[0];
+      let lastIndex = file.name.split('').lastIndexOf('.');
+      this.diagramName = file.name.substring(0,lastIndex);
       let reader = new FileReader();
       let vm = this;
       reader.onload = async function (e) {
