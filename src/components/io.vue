@@ -2,7 +2,7 @@
   <div class="io-import-export">
     <ul class="io-import io-control io-control-list io-horizontal">
       <li>
-        <label for="uploads" class="btn" style="">
+        <label for="uploads" class="btn" style="" title="Загрузить диаграмму BPMN">
           <span class="icon-open"></span>
         </label>
         <input v-on:change="$emit('upload', $event)" id="uploads" type="file" style="display: none;"/>
@@ -142,6 +142,8 @@ export default {
         try {
           const {xml} = await vm.modeler.saveXML({format: true});
           vm.setEncoded(downloadLink, 'diagram.bpmn', xml);
+          localStorage.setItem('xml', xml);
+          localStorage.setItem('date', new Date(Date.now()).toLocaleDateString());
         } catch (err) {
           console.error('Error happened saving XML: ', err);
           vm.setEncoded(downloadLink, 'diagram.bpmn', null);

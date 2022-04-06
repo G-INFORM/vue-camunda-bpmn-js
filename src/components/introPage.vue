@@ -18,6 +18,12 @@
             <span class="icon-plus-circled"></span>
             <span>  Создать новую диаграмму</span>
           </button>
+
+          <button class="btn btn-primal" style="font-size: 30px" title="Продолжить работу с последней версией диаграммы"
+                  @click="$emit('continueLastDiagram', $event)">
+            <span class="icon-redo"></span>
+            <span>  Продолжить работу от {{date}}</span>
+          </button>
         </div>
 
       </div>
@@ -37,9 +43,13 @@
 <script>
 export default {
   name: "introPage",
-  emits: ["createNewDiagram", "upload"],
+  emits: ["createNewDiagram", "upload", "continueLastEdit"],
   props: {
     error: {
+      type: String,
+      default: ''
+    },
+    date: {
       type: String,
       default: ''
     }

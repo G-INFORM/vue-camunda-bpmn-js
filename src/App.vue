@@ -2,6 +2,8 @@
   <div class="main content" ref="js-drop-zone">
     <introPage @upload="upload"
                @createNewDiagram="createNewDiagram"
+               @continueLastDiagram="continueLastDiagram"
+               :date="date"
                :error="error"/>
 
     <input-output @upload="upload"
@@ -51,16 +53,25 @@ export default {
     modeler: null,
     container: null,
     error: null,
+    date: null,
     isHiddenAside: true
   }),
   components: {InputOutput, introPage},
   methods: {
+    async continueLastDiagram() {
+      let xml = localStorage.getItem('xml');
+      await this.openDiagram(xml);
+    },
     async createNewDiagram() {
-      if (confirm('Создать новую диаграмму?')) {
-        await this.openDiagram(DiagramXML);
+      if (localStorage.getItem('xml') === null || localStorage.getItem('xml').replace(/\s/g, '') !== DiagramXML.replace(/\s/g, '')) {
+        if (confirm('Создать новую диаграмму? Старые данные будут удалены!')) {
+          await this.openDiagram(DiagramXML);
+        } else {
+          // Do nothing!
+          console.log('Thing was not saved to the database.');
+        }
       } else {
-        // Do nothing!
-        console.log('Thing was not saved to the database.');
+        await this.openDiagram(DiagramXML);
       }
     },
     async openDiagram(xml) {
@@ -129,6 +140,7 @@ export default {
     //   this.modeler.get('comments').collapseAll();
     // },
     async initializeBPMN() {
+      this.date = localStorage.getItem('date');
       let TranslateModule = {
         translate: ['value', ruLang]
       };
@@ -155,7 +167,7 @@ export default {
       this.container = this.$refs["js-drop-zone"];
 
       try {
-         await this.modeler.importXML(DiagramXML);
+         // await this.modeler.importXML(DiagramXML);
         // this.modeler.get('canvas').zoom('fit-viewport');
       } catch (err) {
         console.error('something went wrong:', err);
@@ -175,9 +187,9 @@ export default {
     }
   },
   async mounted() {
-    window.onbeforeunload = function () {
-      return true;
-    };
+    // window.onbeforeunload = function () {
+    //   return true;
+    // };
 
     await this.initializeBPMN();
     // console.log(this.modeler.injector._instances.eventBus._listeners)

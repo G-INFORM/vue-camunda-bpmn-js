@@ -19,6 +19,9 @@
 .icon-delete:before {
   content: '✖'; //❌
 }
+.icon-redo:before {
+  content: '\f41d';
+}
 [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "app";
 }
