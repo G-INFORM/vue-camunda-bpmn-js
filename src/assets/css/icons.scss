@@ -19,6 +19,9 @@
 .icon-delete:before {
   content: '✖'; //❌
 }
+.icon-comment:before {
+  content: '\e800'; //'\f420'
+}
 [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "app";
 }
