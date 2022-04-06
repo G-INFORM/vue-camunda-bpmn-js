@@ -17,14 +17,14 @@
 
     <ul class="io-export io-control io-control-list io-horizontal">
       <li>
-        <a ref="data-download" download="diagram.bpmn"
+        <a ref="data-download" download="diagram.bpmn" @click="diagramNaming"
            href="" class="download" title="Скачать в виде файла BPMN 2.0">
           <span class="icon-download"></span>
         </a>
       </li>
       <li class="vr"></li>
       <li>
-        <a ref="download-svg" id="download-svg"
+        <a ref="download-svg" id="download-svg" @click="diagramNamingSVG"
            href="" class="download" title="Скачать в виде SVG-изображения">
           <span class="icon-picture"></span>
         </a>
@@ -104,8 +104,26 @@ export default {
   data: () => ({
     x: false,
     y: false,
+    diagramName: "diagram",
   }),
   methods: {
+    diagramNaming() {
+      let p = prompt('Введите имя файла');
+      if (p) {
+        this.diagramName = p;
+      }
+      // let downloadSvgLink = this.$refs['download-svg'];
+      let downloadLink = this.$refs['data-download'];
+      downloadLink.setAttribute('download', this.diagramName + '.bpmn');
+    },
+    diagramNamingSVG() {
+      let p = prompt('Введите имя файла');
+      if (p) {
+        this.diagramName = p;
+      }
+      let downloadSvgLink = this.$refs['download-svg'];
+      downloadSvgLink.setAttribute('download', this.diagramName + '.svg');
+    },
     debounce(fn, timeout) {
       let timer;
       return function () {
@@ -133,20 +151,20 @@ export default {
 
         try {
           const {svg} = await vm.modeler.saveSVG();
-          vm.setEncoded(downloadSvgLink, 'diagram.svg', svg);
+          vm.setEncoded(downloadSvgLink, this.diagramName + '.svg', svg);
         } catch (err) {
           console.error('Error happened saving svg: ', err);
-          vm.setEncoded(downloadSvgLink, 'diagram.svg', null);
+          vm.setEncoded(downloadSvgLink, this.diagramName + '.svg', null);
         }
 
         try {
           const {xml} = await vm.modeler.saveXML({format: true});
-          vm.setEncoded(downloadLink, 'diagram.bpmn', xml);
+          vm.setEncoded(downloadLink, this.diagramName + '.bpmn', xml);
           localStorage.setItem('xml', xml);
           localStorage.setItem('date', new Date(Date.now()).toLocaleDateString());
         } catch (err) {
           console.error('Error happened saving XML: ', err);
-          vm.setEncoded(downloadLink, 'diagram.bpmn', null);
+          vm.setEncoded(downloadLink, this.diagramName + '.bpmn', null);
         }
       }, 500);
 
