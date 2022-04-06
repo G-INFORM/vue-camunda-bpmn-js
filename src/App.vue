@@ -155,8 +155,8 @@ export default {
       this.container = this.$refs["js-drop-zone"];
 
       try {
-        await this.modeler.importXML(DiagramXML);
-        this.modeler.get('canvas').zoom('fit-viewport');
+         await this.modeler.importXML(DiagramXML);
+        // this.modeler.get('canvas').zoom('fit-viewport');
       } catch (err) {
         console.error('something went wrong:', err);
       }

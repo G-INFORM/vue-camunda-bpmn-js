@@ -37,7 +37,7 @@
 <script>
 export default {
   name: "introPage",
-  emits: ["createNewDiagram"],
+  emits: ["createNewDiagram", "upload"],
   props: {
     error: {
       type: String,

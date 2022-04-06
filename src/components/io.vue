@@ -37,7 +37,14 @@
           <span class="icon-keyboard"> </span>
         </button>
       </li>
+      <li class="vr"></li>
+      <li>
+        <button title="QA" @click="y = true">
+          <span class="icon-info"> </span>
+        </button>
+      </li>
     </ul>
+
 
     <div class="io-dialog" :class="x? 'open' : ''" v-on:mousedown.self="x = false">
       <div class="content" style="display: inline; font-size: 14px">
@@ -96,6 +103,7 @@ export default {
   },
   data: () => ({
     x: false,
+    y: false,
   }),
   methods: {
     debounce(fn, timeout) {
