@@ -147,13 +147,15 @@ body, html {
     width: 600px;
     left: 50%;
     margin-left: -300px;
-    top: 100px;
+    top: 10%; //100px
     background: white;
     padding: 10px 30px 20px 30px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
     border-radius: 2px;
     height: auto;
     z-index: 1001;
+    overflow: auto;
+    max-height: 90%;
   }
 }
 

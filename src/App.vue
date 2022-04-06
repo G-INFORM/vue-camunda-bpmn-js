@@ -44,7 +44,7 @@ import 'bpmn-js-bpmnlint/dist/assets/css/bpmn-js-bpmnlint.css';
 import bpmnlintConfig from '../.bpmnlintrc';
 import DiagramXML from '@/assets/diagram.bpmn'
 import BpmnColorPickerModule from 'bpmn-js-color-picker';
-import InputOutput from "@/components/io";
+import InputOutput from "@/components/Input-Output-Info/io";
 import introPage from "@/components/introPage";
 
 export default {

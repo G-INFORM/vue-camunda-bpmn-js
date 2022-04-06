@@ -24,6 +24,12 @@
             <span class="icon-redo"></span>
             <span>  Продолжить работу от {{date}}</span>
           </button>
+
+          <button class="btn btn-primal" style="font-size: 30px" title="Что такое бизнес процесс?"
+                  @click="d_showBPInfo = true">
+            <span class="icon-info"></span>
+            <span>  Что такое Бизнес Процесс?</span>
+          </button>
         </div>
 
       </div>
@@ -38,12 +44,19 @@
       </div>
     </div>
   </div>
+  <ModalComponent v-if="d_showBPInfo===true" @close="d_showBPInfo=false">
+    <BPInfo/>
+  </ModalComponent>
 </template>
 
 <script>
+import ModalComponent from "@/components/ModalComponent";
+import BPInfo from "@/components/Input-Output-Info/BPInfo";
 export default {
   name: "introPage",
   emits: ["createNewDiagram", "upload", "continueLastEdit"],
+  components: {BPInfo, ModalComponent},
+  emits: ["createNewDiagram", "upload"],
   props: {
     error: {
       type: String,
@@ -53,7 +66,10 @@ export default {
       type: String,
       default: ''
     }
-  }
+  },
+  data: () => ({
+    d_showBPInfo: false,
+  }),
 }
 </script>
 

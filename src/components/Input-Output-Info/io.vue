@@ -33,71 +33,37 @@
 
     <ul class="io-export io-control io-control-list io-horizontal">
       <li>
-        <button title="Сочетания клавиш" @click="x = true">
+        <button title="Сочетания клавиш" @click="d_showKeyInfo = true">
           <span class="icon-keyboard"> </span>
         </button>
       </li>
       <li class="vr"></li>
       <li>
-        <button title="QA" @click="y = true">
+        <button title="QA" @click="d_showBPInfo = true">
           <span class="icon-info"> </span>
         </button>
       </li>
     </ul>
 
+    <ModalComponent v-if="d_showKeyInfo===true" @close="d_showKeyInfo=false">
+      <KeyboardInfo/>
+    </ModalComponent>
 
-    <div class="io-dialog" :class="x? 'open' : ''" v-on:mousedown.self="x = false">
-      <div class="content" style="display: inline; font-size: 14px">
-        <h1>Сочетания клавиш</h1>
-        <table>
-          <tbody>
-          <tr>
-            <td>Отменить</td>
-            <td class="binding"><code>ctrl + Z</code></td>
-          </tr>
-          <tr>
-            <td>Повторить</td>
-            <td class="binding"><code>ctrl + shift + Z</code></td>
-            <!--            (⇧)-->
-          </tr>
-          <tr>
-            <td>Выделить всё</td>
-            <td class="binding"><code>ctrl + A</code></td>
-          </tr>
-          <tr>
-            <td>Прокрутка (вертикальная)</td>
-            <td class="binding"><code>ctrl + Scrolling</code></td>
-          </tr>
-          <tr>
-            <td>Прокрутка (горизонтальная)</td>
-            <td class="binding"><code>ctrl + shift + Scrolling</code></td>
-          </tr>
-          <tr>
-            <td>Прямое Редактирование</td>
-            <td class="binding"><code>E</code></td>
-          </tr>
-          <tr>
-            <td>Инструмент "Рука"</td>
-            <td class="binding"><code>H</code></td>
-          </tr>
-          <tr>
-            <td>Инструмент "Лассо"</td>
-            <td class="binding"><code>L</code></td>
-          </tr>
-          <tr>
-            <td>Инструмент "Упр. пространством"</td>
-            <td class="binding"><code>S</code></td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <ModalComponent v-if="d_showBPInfo===true" @close="d_showBPInfo=false">
+      <BPInfo/>
+    </ModalComponent>
+
   </div>
 </template>
 
 <script>
+import ModalComponent from "@/components/ModalComponent";
+import KeyboardInfo from "@/components/Input-Output-Info/keyboardInfo";
+import BPInfo from "@/components/Input-Output-Info/BPInfo";
+
 export default {
   name: 'input-output',
+  components: {BPInfo, KeyboardInfo, ModalComponent},
   props: {
     modeler: Object
   },
@@ -105,6 +71,8 @@ export default {
     x: false,
     y: false,
     diagramName: "diagram",
+    d_showKeyInfo: false,
+    d_showBPInfo: false,
   }),
   methods: {
     diagramNaming() {
