@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.26.1",
     "bpmn-js-embedded-comments": "^0.6.1",
     "bpmn-js-properties-panel": "^0.46.0",
     "bpmnlint": "^7.6.0",

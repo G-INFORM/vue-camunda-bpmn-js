@@ -69,10 +69,10 @@
 </template>
 
 <script>
-import ModalComponent from "@/components/ModalComponent";
+import ModalComponent from "@/components/modalComponent";
 import KeyboardInfo from "@/components/Input-Output-Info/keyboardInfo";
 import BPInfo from "@/components/Input-Output-Info/BPInfo";
-import SetName from "@/components/Input-Output-Info/SetName";
+import SetName from "@/components/Input-Output-Info/setName";
 
 export default {
   name: 'input-output',

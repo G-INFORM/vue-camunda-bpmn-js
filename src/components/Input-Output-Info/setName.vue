@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "SetName",
+  name: "setName",
   emits: ["close"],
   props:{
     link: HTMLAnchorElement,

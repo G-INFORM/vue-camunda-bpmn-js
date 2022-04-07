@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import ModalComponent from "@/components/ModalComponent";
+import ModalComponent from "@/components/modalComponent";
 import BPInfo from "@/components/Input-Output-Info/BPInfo";
 export default {
   name: "introPage",
