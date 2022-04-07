@@ -20,7 +20,8 @@
           </button>
 
           <button class="btn btn-primal" style="font-size: 30px" title="Продолжить работу с последней версией диаграммы"
-                  @click="$emit('continueLastDiagram', $event)">
+                  @click="$emit('continueLastDiagram', $event)"
+                  v-if="date !== null">
             <span class="icon-redo"></span>
             <span>  Продолжить работу от {{date}}</span>
           </button>
