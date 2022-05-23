@@ -26,10 +26,10 @@
             <span>  Продолжить работу от {{date}}</span>
           </button>
 
-          <button class="btn btn-primal" style="font-size: 30px" title="Что такое бизнес процесс?"
-                  @click="d_showBPInfo = true">
+          <button class="btn btn-primal" style="font-size: 30px" title="Документация по BPMN"
+            @click="hrefDocumentation">
             <span class="icon-info"></span>
-            <span>  Что такое Бизнес Процесс?</span>
+            <span>  Информационная поддержка</span>
           </button>
         </div>
 
@@ -70,6 +70,11 @@ export default {
   data: () => ({
     d_showBPInfo: false,
   }),
+  methods: {
+    hrefDocumentation() {
+      window.open(window.location.href+'guide');
+    }
+  }
 }
 </script>
 
