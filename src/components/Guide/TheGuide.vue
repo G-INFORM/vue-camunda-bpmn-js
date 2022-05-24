@@ -1,7 +1,7 @@
 <template>
   <SideBar @getComponent="getComponent" :p_components="d_components"/>
   <MainContent>
-    <InfoBP v-if="d_component === 'InfoBP'"/>
+    <BPInfo v-if="d_component === 'BPInfo'"/>
     <DescriptionBP v-if="d_component === 'Description'"/>
     <RulesBP v-if="d_component === 'Rules'"/>
   </MainContent>
@@ -10,18 +10,19 @@
 <script>
 import SideBar from "@/components/Guide/SideBar";
 import MainContent from "@/components/Guide/MainContent";
-import InfoBP from "@/components/Guide/InfoBP";
+// import InfoBP from "@/components/Guide/InfoBP";
+import BPInfo from "@/components/Input-Output-Info/BPInfo.vue"
 import DescriptionBP from "@/components/Guide/DescriptionBP";
 import RulesBP from "@/components/Guide/RulesBP";
 export default {
   name: "TheGuide",
-  components: {RulesBP, DescriptionBP, InfoBP, MainContent, SideBar},
+  components: {RulesBP, DescriptionBP, BPInfo, MainContent, SideBar},
   data: () => ({
     d_components: [
       {
         name: "Что такое бизнес процесс?",
         id: 1,
-        component: "InfoBP",
+        component: "BPInfo",
         children: [{}]
       },
       {
@@ -37,7 +38,7 @@ export default {
         children: [{}]
       }
     ],
-    d_component: ""
+    d_component: "BPInfo"
   }),
   methods: {
     getComponent(component) {

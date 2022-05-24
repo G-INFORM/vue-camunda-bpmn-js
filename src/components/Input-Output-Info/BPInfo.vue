@@ -1,5 +1,5 @@
 <template>
-  <h1>Бизнес процессы</h1>
+  <h1 class="bp-h1">Бизнес процессы</h1>
   <ol class="rounded">
     <li >
       Бизнес процессы - набор функций, выполняемых в определённой
@@ -38,7 +38,11 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@import "../../assets/css/variables.scss";
+.bp-h1 {
+  text-align: center;
+}
 .rounded {
   counter-reset: li;
   list-style: none;
@@ -52,8 +56,8 @@ export default {
   display: block;
   padding: .4em .4em .4em 2em;
   margin: .75em 0;
-  background: #DAD2CA;
-  color: #444;
+  background: #8d8d8d;
+  color: #FFF;
   text-decoration: none;
   border-radius: .3em;
   text-align: justify;
@@ -62,7 +66,7 @@ export default {
 }
 
 .rounded li:hover {
-  background: #E9E4E0;
+  background: #5c5c5c;
 }
 
 /*.rounded li:hover:before {transform: rotate(360deg);}*/
@@ -73,7 +77,7 @@ export default {
   left: -1.3em;
   top: 50%;
   margin-top: -1.3em;
-  background: #8FD4C1;
+  background: $main-color;
   height: 2em;
   width: 2em;
   line-height: 2em;

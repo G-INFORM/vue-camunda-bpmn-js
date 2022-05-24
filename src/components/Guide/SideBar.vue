@@ -39,7 +39,7 @@ export default {
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
-  background-color: #111; /* Black */
+  background-color: $main-color; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 20px;
 }
@@ -48,14 +48,16 @@ export default {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
   display: block;
   cursor: pointer;
+  color: white;
+  transition: margin-left 0.5s;
 }
 
 /* When you mouse over the navigation links, change their color */
 .sidenav span:hover {
-  color: #f1f1f1;
+  //color: #BFBFBF;
+  margin-left: 7px;
 }
 ul {
   margin: 0;
