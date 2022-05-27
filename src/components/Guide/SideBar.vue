@@ -1,29 +1,32 @@
 <template>
   <div class="sidenav">
-    <span></span>
-    <ul>
-      <li v-for="component in p_components" v-bind:key="component.id">
-        <span @click="getComponent(component.component)">{{component.name}}</span>
-      </li>
-    </ul>
-<!--    <span @click="getComponentNumber(1)">Что такое бизнес процесс?</span>-->
-<!--    <span @click="getComponentNumber(2)">Описание нотации BPMN</span>-->
-<!--    <span @click="getComponentNumber(3)">Правила работы с системой</span>-->
+    <router-link :to="{ name: 'infoBP' }">
+      <span>Что такое бизнес процесс?</span>
+    </router-link>
+    <router-link :to="{ name: 'descriptionBP' }">
+      <span>Описание нотации BPMN</span>
+    </router-link>
+    <router-link :to="{ name: 'rulesBP' }">
+      <span>
+        Правила работы с системой
+      </span>
+    </router-link>
+<!--    <div class="children">-->
+<!--      <span><a @click="scrollMeTo('main')">Главная страница сервиса</a></span>-->
+<!--      <span><a ref="save" @click="scrollMeTo('save') ">Сохранение BPMN-Схем</a></span>-->
+<!--&lt;!&ndash;      <span><a href="#main">Главная страница сервиса</a></span>&ndash;&gt;-->
+<!--&lt;!&ndash;      <span><a href="#save">Сохранение BPMN-Схем</a></span>&ndash;&gt;-->
+<!--    </div>-->
   </div>
 </template>
 
 <script>
 export default {
   name: "SideBar",
-  props: {
-    p_components: {
-      type: Object,
-      default: null
-    }
-  },
   methods: {
-    getComponent(component) {
-      this.$emit('getComponent', component);
+    scrollMeTo(refName) {
+      var element = this.$refs[refName];
+      element.scrollIntoView();
     }
   }
 }
@@ -31,6 +34,9 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../assets/css/variables.scss";
+.children {
+  margin-left: 7px;
+}
 /* The sidebar menu */
 .sidenav {
   height: 100%; /* Full-height: remove this if you want "auto" height */

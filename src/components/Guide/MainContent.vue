@@ -10,7 +10,6 @@
 </template>
 
 <script>
-// import WhatIsBPMN from "@/components/Guide/WhatIsBPMN";
 export default {
   name: "MainContent",
   components: { }
@@ -29,6 +28,7 @@ export default {
   height: 100%;
   display: flex;
   justify-content: center;
+  margin: 50px auto;
 }
 .content {
   display: flex;

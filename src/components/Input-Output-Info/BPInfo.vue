@@ -48,7 +48,7 @@ export default {
   list-style: none;
   font: 14px "Trebuchet MS", "Lucida Sans";
   padding: 0;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+ // text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 
 .rounded li {
