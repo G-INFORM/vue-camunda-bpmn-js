@@ -1,8 +1,8 @@
 <template>
-  <!-- Page content -->
   <div class="main-content-guide">
     <div class="wrapper-content">
       <div class="content">
+<!--        <slot :p_name="'save'"/>-->
         <slot/>
       </div>
     </div>
@@ -12,7 +12,15 @@
 <script>
 export default {
   name: "MainContent",
-  components: { }
+  props: {
+    p_name: {
+      type: String,
+      default: ""
+    }
+  },
+  mounted() {
+    console.log('MainContent', this.p_name)
+  }
 }
 </script>
 

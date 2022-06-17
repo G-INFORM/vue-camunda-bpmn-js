@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <h1 style="text-align: center">Главная страница серсиса</h1>
+    <a id="main"><h1 style="text-align: center">Главная страница серсиса</h1></a>
     <img src="../../assets/img/guide/element31.png" alt="Главная страница сервиса">
     <ol class="list">
       <li>
@@ -26,7 +26,7 @@
       </li>
     </ol>
 
-    <h1 style="text-align: center; margin-top: 50px">СОХРАНЕНИЕ BPMN-СХЕМ</h1>
+    <a id="save"><h1 style="text-align: center; margin-top: 50px">СОХРАНЕНИЕ BPMN-СХЕМ</h1></a>
     <p>Чтобы сохранить спроектированную диаграмму, необходимо в нижнем левом углу нажать иконку сохранения:</p>
 
     <div class="img-container">
@@ -55,7 +55,20 @@
 
 <script>
 export default {
-  name: "RulesBP"
+  name: "RulesBP",
+  props: {
+    p_name: {
+      type: String,
+      default: "",
+    }
+  },
+  mounted() {
+    console.log('RulesBP', this.p_name)
+  }
+  // scrollMeTo(refName) {
+  //   var element = this.$refs[refName];
+  //   element.scrollIntoView();
+  // },
 }
 </script>
 

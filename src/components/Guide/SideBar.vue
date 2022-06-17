@@ -6,28 +6,33 @@
     <router-link :to="{ name: 'descriptionBP' }">
       <span>Описание нотации BPMN</span>
     </router-link>
-    <router-link :to="{ name: 'rulesBP' }">
-      <span>
+    <router-link :to="{ name: 'rulesBP' }" class="parent">
+      <span @click="showRulesChildren = true">
         Правила работы с системой
       </span>
     </router-link>
-<!--    <div class="children">-->
-<!--      <span><a @click="scrollMeTo('main')">Главная страница сервиса</a></span>-->
-<!--      <span><a ref="save" @click="scrollMeTo('save') ">Сохранение BPMN-Схем</a></span>-->
-<!--&lt;!&ndash;      <span><a href="#main">Главная страница сервиса</a></span>&ndash;&gt;-->
-<!--&lt;!&ndash;      <span><a href="#save">Сохранение BPMN-Схем</a></span>&ndash;&gt;-->
-<!--    </div>-->
+    <div class="children" onblur="showRulesChildren = false" v-if="showRulesChildren">
+      <span><a href="#main">Главная страница сервиса</a></span>
+      <span><a href="#save">Сохранение BPMN-Схем</a></span>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "SideBar",
+  data:() => ( {
+    showRulesChildren: false
+  }),
+
   methods: {
-    scrollMeTo(refName) {
-      var element = this.$refs[refName];
-      element.scrollIntoView();
-    }
+    // scrollMeTo(refName) {
+    //   // var element = this.$refs[refName];
+    //   // element.scrollIntoView();
+    // },
+    getLinkName(name) {
+      this.$emit('getLinkName', name);
+    },
   }
 }
 </script>
@@ -35,7 +40,8 @@ export default {
 <style lang="scss" scoped>
 @import "../../assets/css/variables.scss";
 .children {
-  margin-left: 7px;
+  margin-left: 20px;
+  background-color: #8E24AA;
 }
 /* The sidebar menu */
 .sidenav {
@@ -60,10 +66,19 @@ export default {
   transition: margin-left 0.5s;
 }
 
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  color: white;
+  transition: margin-left 0.5s;
+}
+
 /* When you mouse over the navigation links, change their color */
 .sidenav span:hover {
   //color: #BFBFBF;
-  margin-left: 7px;
+  //margin-left: 7px;
 }
 ul {
   margin: 0;
