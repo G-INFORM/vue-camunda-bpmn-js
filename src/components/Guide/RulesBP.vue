@@ -1,6 +1,21 @@
 <template>
   <div class="content">
-    <a id="main"><h1 style="text-align: center">Главная страница серсиса</h1></a>
+    <a href="#" class="ontop">
+      <div class="arrow">
+        <svg style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" xml:space="preserve"
+             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g class="st0" id="grid"/>
+          <g id="icon"><g><g><path class="st2" d="M21,16c-0.26,0-0.51-0.1-0.71-0.29L16,11.41l-4.29,4.29c-0.39,0.39-1.02,0.39-1.41,0s-0.39-1.02,0-1.41l5-5     c0.39-0.39,1.02-0.39,1.41,0l5,5c0.39,0.39,0.39,1.02,0,1.41C21.51,15.9,21.26,16,21,16z"/></g></g>
+            <g><g><path class="st2" d="M21,22c-0.26,0-0.51-0.1-0.71-0.29L16,17.41l-4.29,4.29c-0.39,0.39-1.02,0.39-1.41,0s-0.39-1.02,0-1.41l5-5     c0.39-0.39,1.02-0.39,1.41,0l5,5c0.39,0.39,0.39,1.02,0,1.41C21.51,21.9,21.26,22,21,22z"/></g></g></g>
+        </svg>
+      </div>
+    </a>
+    <div>
+      <h1 class="structure">Содержание страницы</h1>
+      <span><a href="#main" class="link">Главная страница сервиса</a></span>
+      <span><a href="#save" class="link">Сохранение BPMN-Схем</a></span>
+    </div>
+    <a id="main"><h1 class="link-header">Главная страница серсиса</h1></a>
     <img src="../../assets/img/guide/element31.png" alt="Главная страница сервиса">
     <ol class="list">
       <li>
@@ -13,7 +28,8 @@
         посредством которого можно выбрать и открыть любую диаграмму с расширением «bpmn».
       </li>
       <li>
-        В случае выбора <span class="text_bold">«Создать новую диаграмму»</span> откроется новый проект, при этом очиститься авто сохраненная диаграмма.
+        В случае выбора <span class="text_bold">«Создать новую диаграмму»</span> откроется новый проект, при этом
+        очиститься авто сохраненная диаграмма.
       </li>
       <li>
         При работе с BPMN-схемами выполняется авто-сохранение, поэтому в случае если страница или браузер
@@ -26,7 +42,7 @@
       </li>
     </ol>
 
-    <a id="save"><h1 style="text-align: center; margin-top: 50px">СОХРАНЕНИЕ BPMN-СХЕМ</h1></a>
+    <a id="save"><h1 class="link-header">СОХРАНЕНИЕ BPMN-СХЕМ</h1></a>
     <p>Чтобы сохранить спроектированную диаграмму, необходимо в нижнем левом углу нажать иконку сохранения:</p>
 
     <div class="img-container">
@@ -56,19 +72,6 @@
 <script>
 export default {
   name: "RulesBP",
-  props: {
-    p_name: {
-      type: String,
-      default: "",
-    }
-  },
-  mounted() {
-    console.log('RulesBP', this.p_name)
-  }
-  // scrollMeTo(refName) {
-  //   var element = this.$refs[refName];
-  //   element.scrollIntoView();
-  // },
 }
 </script>
 
@@ -77,15 +80,18 @@ export default {
   display: flex;
   justify-content: center;
 }
+
 .content {
   display: flex;
   flex-direction: column;
   align-content: center;
   //margin: 100px auto;
 }
+
 .text_bold {
   font-weight: bold;
 }
+
 .list {
   font-size: large;
   margin-top: 7px;

@@ -5,6 +5,8 @@ import TheMain from "@/TheMain";
 import BPInfo from "@/components/Input-Output-Info/BPInfo";
 import DescriptionBP from "@/components/Guide/DescriptionBP";
 import RulesBP from "@/components/Guide/RulesBP";
+import IntroductionBP from "@/components/Guide/IntroductionBP";
+import RulesDescriptionBP from "@/components/Guide/RulesDescriptionBP";
 
 const routes = [
     {
@@ -12,6 +14,16 @@ const routes = [
         name: "guide",
         component: TheGuide,
         children: [
+            {
+                path: "bp-rules-description",
+                name: "RulesDescriptionBP",
+                component: RulesDescriptionBP
+            },
+            {
+                path: "bp-introduction",
+                name: "IntroductionBP",
+                component: IntroductionBP
+            },
             {
                 path: "bp-info",
                 name: "infoBP",

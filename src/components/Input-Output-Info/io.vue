@@ -45,7 +45,7 @@
       </li>
       <li class="vr"></li>
       <li>
-        <button title="QA" @click="d_showBPInfo = true">
+        <button title="QA" @click="hrefDocumentation">
           <span class="icon-info"> </span>
         </button>
       </li>
@@ -91,6 +91,9 @@ export default {
     link: null,
   }),
   methods: {
+    hrefDocumentation() {
+      window.open(window.location.href+'guide');
+    },
     debounce(fn, timeout) {
       let timer;
       return function () {
