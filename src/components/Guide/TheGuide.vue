@@ -11,6 +11,9 @@ import MainContent from "@/components/Guide/MainContent";
 export default {
   name: "TheGuide",
   components: { MainContent, SideBar},
+  mounted() {
+    this.$router.push({name: 'IntroductionBP'});
+  }
 }
 </script>
 

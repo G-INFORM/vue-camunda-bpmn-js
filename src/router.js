@@ -15,11 +15,6 @@ const routes = [
         component: TheGuide,
         children: [
             {
-                path: "bp-rules-description",
-                name: "RulesDescriptionBP",
-                component: RulesDescriptionBP
-            },
-            {
                 path: "bp-introduction",
                 name: "IntroductionBP",
                 component: IntroductionBP
@@ -33,6 +28,11 @@ const routes = [
                 path: "bp-description",
                 name: 'descriptionBP',
                 component: DescriptionBP
+            },
+            {
+                path: "bp-rules-description",
+                name: "RulesDescriptionBP",
+                component: RulesDescriptionBP
             },
             {
                 path: 'bp-rules',
