@@ -281,23 +281,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-//.wrapper-content {
-//  width: 100%;
-//  height: 100%;
-//  display: flex;
-//  justify-content: center;
-//}
-//
-//.content {
-//  display: flex;
-//  flex-direction: column;
-//  width: fit-content;
-//  max-width: 50vw;
-//  font-family: GraphikCy, 'Helvetica CY', Arial, sans-serif !important;
-//  //font-size: large;
-//  //font-family: cursive;
-//}
-
 .list {
   font-size: large;
   margin-top: 7px;

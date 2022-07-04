@@ -12,15 +12,6 @@
 <script>
 export default {
   name: "MainContent",
-  props: {
-    p_name: {
-      type: String,
-      default: ""
-    }
-  },
-  mounted() {
-    console.log('MainContent', this.p_name)
-  }
 }
 </script>
 
@@ -43,6 +34,7 @@ export default {
   flex-direction: column;
   width: fit-content;
   max-width: 50vw;
+  min-width: 50vw;
   font-family: GraphikCy,'Helvetica CY',Arial,sans-serif!important;
   //font-size: large;
   //font-family: cursive;

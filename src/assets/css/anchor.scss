@@ -1,0 +1,59 @@
+.st0 {
+  display: none;
+}
+
+.st1 {
+  display: inline;
+}
+
+.st2 {
+  fill: #0097E2;
+}
+
+.st3 {
+  fill: #3A3A3A;
+}
+
+.ontop {
+  position: fixed;
+  top: 80%;
+  left: 92%;
+  z-index: 999;
+  cursor: pointer;
+}
+.arrow {
+  width: 100px;
+  height: 100px;
+}
+.structure {
+  font-weight: bold;
+}
+
+.structure:before {
+  content: '#';
+  color: red;
+}
+
+.link {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  display: block;
+  cursor: pointer;
+  transition: margin-left 0.5s;
+  color: black;
+}
+
+.link:before {
+  content: '#';
+  color: red;
+}
+
+.link-header {
+  text-align: center;
+  margin-top: 50px;
+}
+.link-header:before {
+  content: '#';
+  color: red;
+}

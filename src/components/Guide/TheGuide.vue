@@ -1,6 +1,6 @@
 <template>
-  <SideBar @getLinkName="getLinkName"/>
-  <MainContent :p_name="d_name">
+  <SideBar/>
+  <MainContent>
     <router-view></router-view>
   </MainContent>
 </template>
@@ -11,14 +11,8 @@ import MainContent from "@/components/Guide/MainContent";
 export default {
   name: "TheGuide",
   components: { MainContent, SideBar},
-  data:() => ({
-    d_name: ""
-  }),
-  methods: {
-    getLinkName(name) {
-      this.d_name = name;
-      console.log('TheGuide', name)
-    }
+  mounted() {
+    this.$router.push({name: 'IntroductionBP'});
   }
 }
 </script>
