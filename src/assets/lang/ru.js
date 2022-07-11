@@ -215,8 +215,12 @@ export default {
     "Sub process is missing start event": "В подпроцессе отсутствует стартовое событие",
     "Start event must be blank": "Стартовое событие должно быть пустым",
     "Gateway is superfluous. It only has one source and target.": "Шлюз лишний. У него только один источник и одна цель.",
+
+    "Set Color": "Установить цвет",
+
+    // не работает
     "Errors": "Ошибки",
     "Warnings": "Предупреждения",
-    // не работает
-    "Issues for child elements:": "Проблемы для дочерних элементов"
+    "Issues for child elements:": "Проблемы для дочерних элементов",
+
 };

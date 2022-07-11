@@ -47,6 +47,10 @@ import DiagramXML from '@/assets/diagram.bpmn'
 import BpmnColorPickerModule from 'bpmn-js-color-picker';
 import InputOutput from "@/components/Input-Output-Info/io";
 import introPage from "@/components/introPage";
+// import CollapseSubprocessPopupProviderModule from 'bpmn-js-collapse-subprocess';
+//    "bpmn-js-properties-panel": "^1.2.0",
+// "bpmn-js-collapse-subprocess": "^0.1.1",
+
 
 export default {
   name: 'TheMain',
@@ -163,7 +167,8 @@ export default {
           TranslateModule,
           EmbeddedComments,
           lintModule,
-          BpmnColorPickerModule
+          BpmnColorPickerModule,
+          // CollapseSubprocessPopupProviderModule
         ],
         linting: {
           bpmnlint: bpmnlintConfig

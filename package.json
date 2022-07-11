@@ -10,10 +10,10 @@
   "dependencies": {
     "axios": "^0.26.1",
     "bpmn-js-embedded-comments": "^0.6.1",
-    "bpmn-js-properties-panel": "^0.46.0",
-    "bpmnlint": "^7.6.0",
+    "bpmn-js-properties-panel": "^1.2.0",
+    "bpmnlint": "^7.8.0",
     "bpmnlint-loader": "^0.1.5",
-    "camunda-bpmn-js": "^0.11.0",
+    "camunda-bpmn-js": "^0.14.0",
     "core-js": "^3.8.3",
     "vue": "^3.2.13",
     "vue-router": "^4.0.15",
