@@ -47,6 +47,12 @@ import DiagramXML from '@/assets/diagram.bpmn'
 import BpmnColorPickerModule from 'bpmn-js-color-picker';
 import InputOutput from "@/components/Input-Output-Info/io";
 import introPage from "@/components/introPage";
+// import qaExtension from '@/components/test.json';
+import nyanDrawModule from '@/customModule/draw';
+import nyanPaletteModule from '@/customModule/palette';
+
+// inlined and base64 encoded ./cat.gif
+
 
 export default {
   name: 'TheMain',
@@ -163,11 +169,18 @@ export default {
           TranslateModule,
           EmbeddedComments,
           lintModule,
-          BpmnColorPickerModule
+          BpmnColorPickerModule,
+          // resizeAllModule,
+          // colorPickerModule,
+          nyanDrawModule,
+          nyanPaletteModule
         ],
         linting: {
           bpmnlint: bpmnlintConfig
         },
+        // moddleExtensions: {
+        //   qa: qaExtension
+        // },
       });
 
       this.container = this.$refs["js-drop-zone"];
