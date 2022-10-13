@@ -38,7 +38,7 @@
 
 import BpmnModeler from 'camunda-bpmn-js/lib/camunda-platform/Modeler';
 import 'camunda-bpmn-js/dist/assets/camunda-platform-modeler.css';
-import EmbeddedComments from 'bpmn-js-embedded-comments';
+import EmbeddedComments from '@/components/EmbeddedComments';
 import ruLang from '@/assets/lang/castomTranslate';
 import lintModule from 'bpmn-js-bpmnlint';
 import 'bpmn-js-bpmnlint/dist/assets/css/bpmn-js-bpmnlint.css';
