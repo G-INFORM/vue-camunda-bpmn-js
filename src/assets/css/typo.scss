@@ -1,17 +1,13 @@
 @font-face {
-  font-family: 'bpmn-js-comments';
-  src: url('../fonts/bpmn-js-comments.eot');
-  src: url('../fonts/bpmn-js-comments.eot#iefix') format('embedded-opentype'),
-  url('../fonts/bpmn-js-comments.woff') format('woff'),
-  url('../fonts/bpmn-js-comments.ttf') format('truetype'),
-  url('../fonts/bpmn-js-comments.svg#bpmn-js-comments') format('svg');
+  font-family: 'app';
+  src: url('../fonts/app.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'app';
-  src: url('../fonts/app.ttf') format('truetype');
+  font-family: 'ionic';
+  src: url('../fonts/ionic-shrink.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

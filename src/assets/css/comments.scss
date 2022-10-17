@@ -1,58 +1,88 @@
-.selected .comments-overlay,
-.comments-overlay.with-comments {
+.selected .comments-overlay{
   display: block;
 }
 
 .comments-overlay {
-  background: #52B415;
+  background: #0078c2;
   font-size: 12px;
   color: white;
   display: none;
   padding: 5px;
   border-radius: 5px;
-
-  .toggle {
-    white-space: nowrap;
+  
+  &.with-comments {
+    display: block;
   }
 
-  .icon-comment {
-    margin-right: 2px;
-    &:hover {
-      color: #EEE;
-    }
-  }
-
-  .comment-count {
-    display: inline;
-  }
-
-  .icon-delete {
-    color: white;
-  }
-
-  .expanded {
-    z-index: 100;
+  &.expanded {
+    z-index: 200;
     position: absolute; /* for z-index to work */
   }
   &.expanded .content {
     display: block;
   }
 
+  .toggle {
+    white-space: nowrap;
+  }
+
+  .comment-count {
+    display: inline;
+  }
+
   .comment {
     border-top: dotted 1px #666;
     margin-top: 4px;
-    padding-top: 4px;
-    white-space: pre-wrap;
+    padding: 4px 17px 0px 2px;
     position: relative;
+
+    h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+
+    a {
+      color: rgb(249, 255, 170);
+    }
+
+    ul, ol {
+      margin: 0;
+      padding-left: 25px;
+    }
+    
+    ul li {
+      list-style-type: "— ";
+    }
+
+    .attachment-link {
+      position: absolute;
+      right: 15px;
+      top: 4px;
+      text-decoration: none;
+      display: none;
+      color: white;
+    }
 
     .delete {
       position: absolute;
       right: 3px;
-      top: 3px;
+      top: 4px;
       text-decoration: none;
       display: none;
+      color: white;
     }
-    &:hover .delete {
+
+    &:hover .delete, &:hover .attachment-link {
       display: block;
     }
   }
@@ -60,10 +90,11 @@
   .edit {
     margin: 2px 0 0 0;
     padding-top: 2px;
+
     textarea {
       border: none;
       margin: 0;
-      min-width: 158px;
+      min-width: 280px;
       width: 100%;
     }
   }
@@ -83,8 +114,4 @@
   .content {
     display: none;
   }
-
 }
-
-
-

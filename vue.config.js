@@ -24,7 +24,5 @@ module.exports = defineConfig({
         .use('bpmnlint-loader')
         .loader('bpmnlint-loader')
         .end();
-
-
     }
 })

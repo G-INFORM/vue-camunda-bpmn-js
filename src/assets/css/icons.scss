@@ -17,16 +17,19 @@
   content: '\f41a';
 }
 .icon-delete:before {
-  content: '✖'; //❌
+  content: '\ea4d'; //❌
+}
+.icon-link:before {
+  content: '\e980'; //❌
 }
 .icon-redo:before {
   content: '\f41d';
 }
 .icon-comment:before {
-  content: '\e800'; //'\f420'
+  content: '\e934';
 }
 [class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "app";
+  font-family: "app", "ionic";
 }
 [class^="icon-"]:before, [class*=" icon-"]:before {
   font-style: normal;

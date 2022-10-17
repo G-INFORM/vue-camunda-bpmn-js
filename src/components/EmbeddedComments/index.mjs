@@ -1,6 +1,6 @@
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var $ = _interopDefault(require('jquery'));
+import $ from 'jquery';
+import textToLink from '../../utils/textToLink.mjs'
+import { parse } from 'marked'
 
 function _getCommentsElement(element, create) {
   var bo = element.businessObject;
@@ -26,8 +26,8 @@ function getComments(element) {
   if (!doc || !doc.text) {
     return [];
   } else {
-    return doc.text.split(/;\r?\n;/).map(function (str) {
-      return str.split(/:/, 2);
+    return doc.text.split(/###\r?\n###/).map(function (str) {
+      return str.split(/`/, 2);
     });
   }
 }
@@ -35,8 +35,8 @@ function setComments(element, comments) {
   var doc = _getCommentsElement(element, true);
 
   var str = comments.map(function (c) {
-    return c.join(':');
-  }).join(';\n;');
+    return c.join('`');
+  }).join('###\n###');
   doc.text = str;
 }
 function addComment(element, author, str) {
@@ -64,7 +64,7 @@ function removeComment(element, comment) {
   setComments(element, comments);
 }
 
-function Comments(eventBus, overlays, bpmnjs) {
+function Comments(eventBus, overlays) {
   function toggleCollapse(element) {
     var o = overlays.get({
       element: element,
@@ -90,12 +90,12 @@ function Comments(eventBus, overlays, bpmnjs) {
 
   function createCommentBox(element) {
     var $overlay = $(Comments.OVERLAY_HTML);
-    $overlay.find('.toggle').click(function (e) {
+    $overlay.find('.toggle').click(function () {
       toggleCollapse(element);
     });
     var $commentCount = $overlay.find('[data-comment-count]'),
-        $textarea = $overlay.find('textarea'),
-        $comments = $overlay.find('.comments');
+      $textarea = $overlay.find('textarea'),
+      $comments = $overlay.find('.comments');
 
     function renderComments() {
       // clear innerHTML
@@ -103,7 +103,14 @@ function Comments(eventBus, overlays, bpmnjs) {
       var comments = getComments(element);
       comments.forEach(function (val) {
         var $comment = $(Comments.COMMENT_HTML);
-        $comment.find('[data-text]').text(val[1]);
+        var dataTextElement = $comment.find('[data-text]');
+        var dataText = dataTextElement.text(val[1]);
+        var safeText = dataText.html();
+        //var textWithLinks = textToLink(safeText);
+        var markedText = parse(safeText);
+        //textWithLinks = fileToLink(textWithLinks);
+        dataTextElement.html(markedText);
+        $comment.find('[data-link]').remove();
         $comment.find('[data-delete]').click(function (e) {
           e.preventDefault();
           removeComment(element, val);
@@ -113,7 +120,7 @@ function Comments(eventBus, overlays, bpmnjs) {
         $comments.append($comment);
       });
       $overlay[comments.length ? 'addClass' : 'removeClass']('with-comments');
-      $commentCount.text(comments.length ? '(' + comments.length + ')' : '');
+      $commentCount.text(comments.length ? ' (' + comments.length + ')' : '');
       eventBus.fire('comments.updated', {
         comments: comments
       });
@@ -134,8 +141,8 @@ function Comments(eventBus, overlays, bpmnjs) {
 
     overlays.add(element, 'comments', {
       position: {
-        bottom: 10,
-        right: 10
+        bottom: 18,
+        right: 14
       },
       html: $overlay
     });
@@ -167,8 +174,8 @@ function Comments(eventBus, overlays, bpmnjs) {
   };
 }
 Comments.$inject = ['eventBus', 'overlays', 'bpmnjs'];
-Comments.OVERLAY_HTML = '<div class="comments-overlay">' + '<div class="toggle">' + '<span class="icon-comment"></span>' + '<span class="comment-count" data-comment-count></span>' + '</div>' + '<div class="content">' + '<div class="comments"></div>' + '<div class="edit">' + '<textarea tabindex="1" placeholder="Add a comment"></textarea>' + '</div>' + '</div>' + '</div>';
-Comments.COMMENT_HTML = '<div class="comment">' + '<div data-text></div><a href class="delete icon-delete" data-delete></a>' + '</div>'; // helpers ///////////////
+Comments.OVERLAY_HTML = '<div class="comments-overlay">' + '<div class="toggle">' + '<span class="icon-comment"></span>' + '<span class="comment-count" data-comment-count></span>' + '</div>' + '<div class="content">' + '<div class="comments"></div>' + '<div class="edit">' + '<textarea tabindex="1" placeholder="Добавить комментарий" style="height:60px"></textarea>' + '</div>' + '</div>' + '</div>';
+Comments.COMMENT_HTML = '<div class="comment">' + '<div data-text></div><a href class="attachment-link icon-link" data-link><a href class="delete icon-delete" data-delete></a>' + '</div>'; // helpers ///////////////
 
 function defer(fn) {
   setTimeout(fn, 0);
@@ -179,5 +186,4 @@ var index = {
   'comments': ['type', Comments]
 };
 
-module.exports = index;
-//# sourceMappingURL=index.js.map
+export default index;
