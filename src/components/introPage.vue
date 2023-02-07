@@ -130,6 +130,4 @@ export default {
 .content.with-diagram .intro {
   display: none;
 }
-
-
 </style>

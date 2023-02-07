@@ -18,6 +18,7 @@
     z-index: 200;
     position: absolute; /* for z-index to work */
   }
+
   &.expanded .content {
     display: block;
   }
@@ -49,6 +50,10 @@
     p {
       margin: 0;
       white-space: pre-wrap;
+    }
+
+    strong {
+      font-weight: 900;
     }
 
     a {

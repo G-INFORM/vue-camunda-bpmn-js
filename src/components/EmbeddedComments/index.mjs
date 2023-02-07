@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import textToLink from '../../utils/textToLink.mjs'
 import { parse } from 'marked'
 
 function _getCommentsElement(element, create) {
@@ -20,6 +19,7 @@ function _getCommentsElement(element, create) {
 
   return comments;
 }
+
 function getComments(element) {
   var doc = _getCommentsElement(element);
 
@@ -31,19 +31,21 @@ function getComments(element) {
     });
   }
 }
+
 function setComments(element, comments) {
   var doc = _getCommentsElement(element, true);
-
   var str = comments.map(function (c) {
     return c.join('`');
   }).join('###\n###');
   doc.text = str;
 }
+
 function addComment(element, author, str) {
   var comments = getComments(element);
   comments.push([author, str]);
   setComments(element, comments);
 }
+
 function removeComment(element, comment) {
   var comments = getComments(element);
   var idx = -1;
@@ -106,11 +108,8 @@ function Comments(eventBus, overlays) {
         var dataTextElement = $comment.find('[data-text]');
         var dataText = dataTextElement.text(val[1]);
         var safeText = dataText.html();
-        //var textWithLinks = textToLink(safeText);
         var markedText = parse(safeText);
-        //textWithLinks = fileToLink(textWithLinks);
         dataTextElement.html(markedText);
-        $comment.find('[data-link]').remove();
         $comment.find('[data-delete]').click(function (e) {
           e.preventDefault();
           removeComment(element, val);
@@ -136,6 +135,10 @@ function Comments(eventBus, overlays) {
           $textarea.val('');
           renderComments();
         }
+      }
+      if (e.which === 27) {
+        e.preventDefault();
+        toggleCollapse(element);
       }
     }); // attach an overlay to a node
 
@@ -173,9 +176,13 @@ function Comments(eventBus, overlays) {
     });
   };
 }
+
 Comments.$inject = ['eventBus', 'overlays', 'bpmnjs'];
 Comments.OVERLAY_HTML = '<div class="comments-overlay">' + '<div class="toggle">' + '<span class="icon-comment"></span>' + '<span class="comment-count" data-comment-count></span>' + '</div>' + '<div class="content">' + '<div class="comments"></div>' + '<div class="edit">' + '<textarea tabindex="1" placeholder="Добавить комментарий" style="height:60px"></textarea>' + '</div>' + '</div>' + '</div>';
-Comments.COMMENT_HTML = '<div class="comment">' + '<div data-text></div><a href class="attachment-link icon-link" data-link><a href class="delete icon-delete" data-delete></a>' + '</div>'; // helpers ///////////////
+Comments.COMMENT_HTML = '<div class="comment">' + 
+  '<div data-text></div>' +
+  '<a href class="delete icon-delete" data-delete></a>' + 
+'</div>'; // helpers ///////////////
 
 function defer(fn) {
   setTimeout(fn, 0);

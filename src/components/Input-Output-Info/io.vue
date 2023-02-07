@@ -61,8 +61,8 @@
 
     <ModalComponent v-if="d_showSetName===true" @close="d_showSetName=false">
       <SetName :link="link"
-                @close="d_showSetName=false"
-                :p_name="diagramName"/>
+               @close="d_showSetName=false"
+               :p_name="diagramName"/>
     </ModalComponent>
 
   </div>
@@ -73,6 +73,7 @@ import ModalComponent from "@/components/modalComponent";
 import KeyboardInfo from "@/components/Input-Output-Info/keyboardInfo";
 import BPInfo from "@/components/Input-Output-Info/BPInfo";
 import SetName from "@/components/Input-Output-Info/setName";
+import {set} from 'idb-keyval';
 
 export default {
   name: 'input-output',
@@ -92,7 +93,7 @@ export default {
   }),
   methods: {
     hrefDocumentation() {
-      window.open(window.location.href+'guide');
+      window.open(window.location.href + 'guide');
     },
     debounce(fn, timeout) {
       let timer;
@@ -130,7 +131,7 @@ export default {
         try {
           const {xml} = await vm.modeler.saveXML({format: true});
           vm.setEncoded(downloadLink, this.diagramName + '.bpmn', xml);
-          localStorage.setItem('xml', xml);
+          set('xml', xml);
           localStorage.setItem('date', new Date(Date.now()).toLocaleDateString());
         } catch (err) {
           console.error('Error happened saving XML: ', err);

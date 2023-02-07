@@ -47,8 +47,9 @@ import DiagramXML from '@/assets/diagram.bpmn'
 import BpmnColorPickerModule from 'bpmn-js-color-picker';
 import InputOutput from "@/components/Input-Output-Info/io";
 import introPage from "@/components/introPage";
+import { get } from 'idb-keyval';
 // import CollapseSubprocessPopupProviderModule from 'bpmn-js-collapse-subprocess';
-//    "bpmn-js-properties-panel": "^1.2.0",
+// "bpmn-js-properties-panel": "^1.2.0",
 // "bpmn-js-collapse-subprocess": "^0.1.1",
 
 
@@ -65,20 +66,27 @@ export default {
   components: {InputOutput, introPage},
   methods: {
     async continueLastDiagram() {
-      let xml = localStorage.getItem('xml');
-      await this.openDiagram(xml);
+      get('xml')
+        .then((xml) =>
+          this.openDiagram(xml)
+        );      
     },
     async createNewDiagram() {
-      if (localStorage.getItem('xml') === null || localStorage.getItem('xml').replace(/\s/g, '') !== DiagramXML.replace(/\s/g, '')) {
-        if (confirm('Создать новую диаграмму? Старые данные будут удалены!')) {
-          await this.openDiagram(DiagramXML);
-        } else {
-          // Do nothing!
-          console.log('Thing was not saved to the database.');
-        }
-      } else {
-        await this.openDiagram(DiagramXML);
-      }
+      get('xml')
+        .then((xml) =>
+          {
+            if (xml && xml.replace(/\s/g, '') !== DiagramXML.replace(/\s/g, '')) {
+              if (confirm('Создать новую диаграмму? Старые данные будут удалены!')) {
+                this.openDiagram(DiagramXML);
+              } else {
+                // Do nothing!
+                console.log('Thing was not saved to the database.');
+              }
+            } else {
+              this.openDiagram(DiagramXML);
+            }
+          }
+        );      
     },
     async openDiagram(xml) {
       try {
@@ -210,6 +218,5 @@ export default {
 </script>
 
 <style lang="scss">
-
 
 </style>
